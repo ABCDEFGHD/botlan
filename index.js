@@ -36,9 +36,6 @@ Client.on("ready", () => {
 	console.log("[STATUS] Logged in !");
 	Client.user.setPresence({ game: { name: `&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, type: 0}})
 	Client.user.setStatus("online");
-		.then(() => {
-			console.log(`[INFOS] Status set to online.`);
-		}).catch(console.error);
 });
 
 /**
