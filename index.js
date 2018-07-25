@@ -4,7 +4,7 @@ const Client  = new Discord.Client();
 
 const Ytdl = require("ytdl-core");
 
-const Audio = require("audio.js");
+const Audio = require("./audio.js");
 
 /** Constants. */
 const PREFIX = "&";
