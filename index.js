@@ -99,12 +99,12 @@ Client.on("message", Message => {
 
 										var thumbnail = info.player_response.videoDetails.thumbnail.thumbnails;
 
-										console.log(thumbnail);
+										console.log(thumbnail[thumbnail.length - 1]);
 										const infos = {
 											"author": info.author.name,
 											"duration": info.length_seconds,
 											"title": info.title,
-											"thumbnail": thumbnail[thumbnail.lenght - 1].url,
+											"thumbnail": thumbnail[thumbnail.lenght - 1][0].url,
 											"url": info.video_url,
 											"formats": info.formats
 										};
