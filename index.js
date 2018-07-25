@@ -144,7 +144,7 @@ Client.on("message", Message => {
 
 										const Stream = Ytdl.downloadFromInfo(info, {"format": "audioonly"});
 										const dispatcher = Connection.playStream(Stream);
-										AudioPlayer = new Audio.Audio(Connection, Message.channel);
+										AudioPlayer = new Audio(Connection, Message.channel);
 									});
 								});
 							}
