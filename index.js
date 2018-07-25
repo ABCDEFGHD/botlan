@@ -99,6 +99,7 @@ Client.on("message", Message => {
 
 										var thumbnail = info.player_response.videoDetails.thumbnail.thumbnails;
 
+										console.log(thumbnail);
 										const infos = {
 											"author": info.author.name,
 											"duration": info.length_seconds,
@@ -141,7 +142,7 @@ Client.on("message", Message => {
 											}
 										});
 
-										const Stream = Ytdl.downloadFromInfo(infos, {"format": "audioonly"});
+										const Stream = Ytdl.downloadFromInfo(info, {"format": "audioonly"});
 										const dispatcher = Connection.playStream(Stream);
 										AudioPlayer = new Audio.Audio(Connection, Message.channel);
 									});
