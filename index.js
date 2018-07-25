@@ -73,6 +73,12 @@ Client.on("message", Message => {
 		var CommandArgs = CommandParts.shift() && CommandParts;
 
 		switch(CommandName) {
+			/**
+			 * @name channel.join
+			 *  Join the voice channel.
+			 *
+			 * @param {VoiceChannel} Message.member.voiceChannel
+			 */
 			case "channel.join":
 				v = Message.member.voiceChannel;
 				if (v) {
@@ -93,7 +99,8 @@ Client.on("message", Message => {
 				if (Voice) {
 					Voice.leave();
 					console.log(`[CHANNEL] Left channel ${v.name}.`);
-					v = null;
+					Message.channel.send(`${Emojis.SUCCESS} Left channel **${Voice.name}**.`);
+					Voice = null;
 				} else {
 					Message.channel.send(`${Emojis.WARNING} The bot is not in a voice channel !`);
 				}
