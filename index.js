@@ -96,12 +96,15 @@ Client.on("message", Message => {
 											m.edit(`${Emojis.FAILURE} Unable to retrieve song info.`);
 											throw err;
 										}
-										console.log(info.player_response.videoDetails.thumbnail.thumbnails[info.player_response.videoDetails.thumbnail.thumbnails.lenght - 1]);
+
+										var thumbnail = info.player_response.videoDetails.thumbnail.thumbnails.pop();
+
+										console.log(thumbnail[thumbnail.length - 1]);
 										const infos = {
 											"author": info.author.name,
 											"duration": info.length_seconds,
 											"title": info.title,
-											"thumbnail": info.player_response.videoDetails.thumbnail.thumbnails[info.player_response.videoDetails.thumbnail.thumbnails.lenght - 1].url,
+											"thumbnail": thumbnail.url,
 											"url": info.video_url,
 											"formats": info.formats
 										};
