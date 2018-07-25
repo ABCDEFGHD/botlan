@@ -34,10 +34,8 @@ Voice = null;
  */
 Client.on("ready", () => {
 	console.log("[STATUS] Logged in !");
-	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: 0 })
-		.then(presence => console.log(`[INFOS] Activity set to ${presence.game ? presence.game.name : 'none'}`))
-		.catch(console.error);
-	Client.user.setStatus("online")
+	Client.user.setPresence({ game: { name: `&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, type: 0}})
+	Client.user.setStatus("online");
 		.then(() => {
 			console.log(`[INFOS] Status set to online.`);
 		}).catch(console.error);
