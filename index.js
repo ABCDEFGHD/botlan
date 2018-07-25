@@ -38,7 +38,7 @@ Client.on("message", Message => {
 		if (!Message.guild || Message.author.username == Client.user.username) return;
 
 		/** Decompose the command. */
-		CommandName = Content.
+		CommandName = Content.substring(PREFIX.length);
 	}
 });
 
