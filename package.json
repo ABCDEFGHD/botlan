@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "discord.js": "^11.3.2",
-    "ytdl-core": "^0.20.2"
+    "ytdl-core": "^0.20.2",
+    "ffmpeg-binaries": "^4.0.0"
   }
 }
