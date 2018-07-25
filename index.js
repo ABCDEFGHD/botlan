@@ -91,9 +91,8 @@ Client.on("message", Message => {
 
 			case "channel.leave":
 				if (Voice) {
-					Voice.leave().then(() => {
-						console.log(`[CHANNEL] Left channel ${v.name}.`);
-					}).catch(console.error);
+					Voice.leave();
+					console.log(`[CHANNEL] Left channel ${v.name}.`);
 					v = null;
 				} else {
 					Message.channel.send(`${Emojis.WARNING} The bot is not in a voice channel !`);
@@ -101,7 +100,7 @@ Client.on("message", Message => {
 				break;
 
 			default:
-				Message.channel.send("Commande invalide !");
+				Message.channel.send(`${Emojis.FAILURE} Invalid command **${CommandName}**`);
 				break;
 		}
 	}
