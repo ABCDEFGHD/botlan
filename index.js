@@ -6,6 +6,18 @@ const Client  = new Discord.Client();
 const PREFIX = "&";
 const TOKEN  = process.env.TOKEN;
 
+/** Emojis used to stylize the bot. */
+const Emojis = {
+	"SUCCESS": ":white_check_mark:",
+	"FAILURE": ":x:",
+
+	"MUSIC_PLAY": ":arrow_forward:",
+	"MUSIC_PAUSE": ":pause:",
+	"MUSIC_SKIP": ":play_pause:",
+
+	"SETTINGS": ":gear:"
+}
+
 /** Some stats about the bot. */
 const Stats = {
 	"guilds": Client.guilds.size,
@@ -21,9 +33,13 @@ Voice = null;
  */
 Client.on("ready", () => {
 	console.log("[STATUS] Logged in !");
-	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: "PLAYING" })
+	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: 0 })
 		.then(presence => console.log(`[INFOS] Activity set to ${presence.game ? presence.game.name : 'none'}`))
 		.catch(console.error);
+	Client.user.setStatus("online")
+		.then(status => {
+			console.log(`[INFOS] Status set to ${status}.`);
+		}).catch(console.error);
 });
 
 /**
@@ -38,7 +54,15 @@ Client.on("message", Message => {
 		if (!Message.guild || Message.author.username == Client.user.username) return;
 
 		/** Decompose the command. */
-		CommandName = Content.substring(PREFIX.length);
+		CommandParts = Content.substring(PREFIX.length).split(" ");
+		CommandName = Commands[0];
+		CommandArgs = CommandParts.shift() && CommandParts;
+
+		switch(CommandName) {
+			default:
+				Message.channel.send("Commande invalide !");
+				break;
+		}
 	}
 });
 
