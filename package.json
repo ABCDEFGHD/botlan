@@ -5,6 +5,7 @@
     "discord.js": "^11.3.2",
     "ytdl-core": "^0.20.2",
     "ffmpeg": "^0.0.4",
-    "ffmpeg-binaries": "^4.0.0"
+    "ffmpeg-binaries": "^4.0.0",
+    "node-opus": "^0.3.0"
   }
 }
