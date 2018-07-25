@@ -21,7 +21,7 @@ Voice = null;
  */
 Client.on("ready", () => {
 	console.log("[STATUS] Logged in !");
-	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: "LISTENING" })
+	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: "PLAYING" })
 		.then(presence => console.log(`[INFOS] Activity set to ${presence.game ? presence.game.name : 'none'}`))
 		.catch(console.error);
 });
@@ -37,7 +37,8 @@ Client.on("message", Message => {
 	if (Content.startsWith(PREFIX)) {
 		if (!Message.guild || Message.author.username == Client.user.username) return;
 
-		console.log(Content);
+		/** Decompose the command. */
+		CommandName = Content.
 	}
 });
 
