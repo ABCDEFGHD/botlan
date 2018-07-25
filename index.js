@@ -1,13 +1,46 @@
-const Discord = require('discord.js');
+/** Dependencies. */
+const Discord = require("discord.js");
+const Client  = new Discord.Client();
 
-var bot = new Discord.Client();
-var prefix = ("lb!");
-var randum = 0;
+/** Constants. */
+const PREFIX = "&";
+const TOKEN  = process.env.TOKEN;
 
-bot.on('ready', () => {
-    bot.user.setPresence({ game: { name: `Manger du bambou | ${prefix}help | ${bot.guilds.size} serveurs`, type: 0}})
-    bot.user.setStatus("dnd");
-    console.log("Bot Prêt !");
+/** Some stats about the bot. */
+const Stats = {
+	"guilds": Client.guilds.size,
+	"users": Client.users.size
+};
+
+/** Pointers. */
+Voice = null;
+
+/**
+ * @event ready
+ *  Emitted when the bot is connected.
+ */
+Client.on("ready", () => {
+	console.log("[STATUS] Logged in !");
+	Client.user.setActivity(`&help | ${Stats.guilds} serveurs | ${Stats.users} utilisateurs`, { type: "LISTENING" })
+		.then(presence => console.log(`[INFOS] Activity set to ${presence.game ? presence.game.name : 'none'}`))
+		.catch(console.error);
 });
 
-bot.login(process.env.TOKEN)
+/**
+ * @event message
+ *  Emitted whenever a user sends a message.
+ */
+Client.on("message", Message => {
+	const Content = Message.content;
+
+	/** Make sure to only listen to commands. */
+	if (Content.startsWith(PREFIX)) {
+		if (!Message.guild || Message.author.username == Client.user.username) return;
+
+		console.log(Content);
+	}
+});
+
+
+/** Login when all events are binded. */
+Client.login(TOKEN);
