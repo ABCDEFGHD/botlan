@@ -68,9 +68,9 @@ Client.on("message", Message => {
 		if (!Message.guild || Message.author.username == Client.user.username) return;
 
 		/** Decompose the command. */
-		CommandParts = Content.substring(PREFIX.length).split(" ");
-		CommandName = CommandParts[0];
-		CommandArgs = CommandParts.shift() && CommandParts;
+		var CommandParts = Content.substring(PREFIX.length).split(" ");
+		var CommandName = CommandParts[0];
+		var CommandArgs = CommandParts.shift() && CommandParts;
 
 		switch(CommandName) {
 			case "channel.join":
@@ -78,7 +78,7 @@ Client.on("message", Message => {
 				if (v) {
 					v.join().then(Connection => {
 						console.log(`[CHANNEL] Connected to ${v.name} !`);
-						Message.channel.send(`${Emojis.SUCCESS} Connected to channel **${err}**.`);
+						Message.channel.send(`${Emojis.SUCCESS} Connected to channel **${v.name}**.`);
 						Voice = v;
 					}).catch(err => {
 						Message.channel.send(`${Emojis.FAILURE} Could not connect to channel : **${err}**.`);
