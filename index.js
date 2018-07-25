@@ -130,7 +130,7 @@ Client.on("message", Message => {
 													},
 													{
 														name: "Duration",
-														value: new Date(SECONDS * 1000).toISOString().substr(11, 8),
+														value: new Date(infos.duration * 1000).toISOString().substr(11, 8),
 														inline: true
 													},
 													{
