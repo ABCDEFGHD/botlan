@@ -1,10 +1,10 @@
-import * as Audio from "audio.js";
-
 /** Dependencies. */
 const Discord = require("discord.js");
 const Client  = new Discord.Client();
 
 const Ytdl = require("ytdl-core");
+
+const Audio = require("audio.js");
 
 /** Constants. */
 const PREFIX = "&";
@@ -143,7 +143,7 @@ Client.on("message", Message => {
 
 									const Stream = Ytdl.downloadFromInfo(infos, {"format": "audioonly"});
 									const dispatcher = Connection.playStream(Stream);
-									AudioPlayer = new Audio(Connection, Message.channel);
+									AudioPlayer = new Audio.Audio(Connection, Message.channel);
 								});
 							});
 						} else {
