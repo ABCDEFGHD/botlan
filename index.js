@@ -1,19 +1,19 @@
-const Discord = require("discord.js");
-const Client = new Discord.Client();
+const Discord = require('discord.js');
+const Cleverbot = require("cleverbot-node");
+const clbot = new Cleverbot;
+const shorten = require('isgd');
+const ms = require('parse-ms');
+//const db = require('quick-db')
 
-const Ytdl = require("ytdl-core");
-const PREFIX = '=';
+var bot = new Discord.Client();
+var prefix = ("pb!");
+var randum = 0;
 
-Client.on("ready", () => {
-  console.log("Logged in !");
+
+bot.on('ready', () => {
+    bot.user.setPresence({ game: { name: `Manger du bambou | ${prefix}help | ${bot.guilds.size} serveurs`, type: 0}})
+    bot.user.setStatus("dnd");
+    console.log("Bot Prêt !");
 });
 
-Client.on("message", Message => {
-  const Content = Message.content;
-
-  if (Message.guild && Content.startsWith(PREFIX)) {
-    console.log(content);
-  }
-});
-
-Client.login(process.env.TOKEN);
+bot.login(process.env.TOKEN)
