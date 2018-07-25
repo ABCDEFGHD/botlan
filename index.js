@@ -109,11 +109,11 @@ Client.on("message", Message => {
 										m.edit({
 											embed: {
 												author: {
-													name: "Song added !"
+													name: "Song added !",
 													icon_url: "https://yt3.ggpht.com/OgVV66t5vou1LkAbPh7yHbJA73Z2kKHs6-mFaeVFjnlU-pWESAPXFi-5pMASF7Mp1YLfoMdeI38v68U=s288-mo-c-c0xffffffff-rj-k-no"
 												},
 												title: infos.title,
-												url: infos.url
+												url: infos.url,
 												fields: [
 													{
 														name: "Uploaded by",
@@ -134,7 +134,7 @@ Client.on("message", Message => {
 														name: "Position in queue",
 														value: "**Now playing**",
 														inline: true
-													},
+													}
 												]
 											}
 										});
