@@ -13,7 +13,8 @@ const Emojis = {
 
 	"MUSIC_PLAY": ":arrow_forward:",
 	"MUSIC_PAUSE": ":pause:",
-	"MUSIC_SKIP": ":play_pause:",
+	"MUSIC_SKIP": ":track_next:",
+	"MUSIC_STOP": ":stop_button:",
 
 	"SETTINGS": ":gear:"
 }
@@ -37,8 +38,8 @@ Client.on("ready", () => {
 		.then(presence => console.log(`[INFOS] Activity set to ${presence.game ? presence.game.name : 'none'}`))
 		.catch(console.error);
 	Client.user.setStatus("online")
-		.then(status => {
-			console.log(`[INFOS] Status set to ${status}.`);
+		.then(() => {
+			console.log(`[INFOS] Status set to online.`);
 		}).catch(console.error);
 });
 
