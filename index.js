@@ -69,7 +69,7 @@ Client.on("message", Message => {
 
 		/** Decompose the command. */
 		CommandParts = Content.substring(PREFIX.length).split(" ");
-		CommandName = Commands[0];
+		CommandName = CommandParts[0];
 		CommandArgs = CommandParts.shift() && CommandParts;
 
 		switch(CommandName) {
@@ -84,6 +84,8 @@ Client.on("message", Message => {
 						Message.channel.send(`${Emojis.FAILURE} Could not connect to channel : **${err}**.`);
 						console.error(err);
 					});
+				} else {
+					Message.channel.send(`${Emojis.WARNING} You must be in a voice channel first !`);
 				}
 				break;
 
