@@ -97,11 +97,13 @@ Client.on("message", Message => {
 											throw err;
 										}
 
+										var thumbnail = info.player_response.videoDetails.thumbnail.thumbnails;
+
 										const infos = {
 											"author": info.author.name,
 											"duration": info.length_seconds,
 											"title": info.title,
-											"thumbnail": info.player_response.videoDetails.thumbnail.thumbnails[info.player_response.videoDetails.thumbnail.thumbnails.lenght - 1].url,
+											"thumbnail": thumbnail[thumbnail.lenght - 1].url,
 											"url": info.video_url,
 											"formats": info.formats
 										};
