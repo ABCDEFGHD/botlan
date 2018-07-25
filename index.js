@@ -111,12 +111,14 @@ Client.on("message", Message => {
 
 										m.edit({
 											embed: {
+												color: FF0000,
 												author: {
 													name: "Song added !",
 													icon_url: "https://yt3.ggpht.com/OgVV66t5vou1LkAbPh7yHbJA73Z2kKHs6-mFaeVFjnlU-pWESAPXFi-5pMASF7Mp1YLfoMdeI38v68U=s288-mo-c-c0xffffffff-rj-k-no"
 												},
 												title: infos.title,
 												url: infos.url,
+												thumbnail: { url: infos.thumbnail },
 												fields: [
 													{
 														name: "Uploaded by",
@@ -167,9 +169,9 @@ Client.on("message", Message => {
 			case "stop":
 				if (AudioPlayer) {
 					AudioPlayer.stop();
-					console.log(`[CHANNEL] Left channel ${v.name}.`);
-					Message.channel.send(`${Emojis.SUCCESS} Left channel **${Voice.name}**.`);
-					Voice = null;
+					console.log(`[CHANNEL] Left channel ${AudioPlayer.VOICE_CHANNEL.name}.`);
+					Message.channel.send(`${Emojis.SUCCESS} Left channel **${AudioPlayer.VOICE_CHANNEL.name}**.`);
+					AudioPlayer = null;
 				} else {
 					Message.channel.send(`${Emojis.WARNING} The bot is not in a voice channel !`);
 				}
