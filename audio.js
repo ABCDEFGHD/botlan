@@ -85,4 +85,12 @@ module.exports = class {
 		this.DISPATCHER.end();
 		this.destructor();
 	}
+
+	/**
+	 * @function get
+	 *  Get `this` properties/
+	 */
+	get(p) {
+		return this[p];
+	}
 }
