@@ -86,8 +86,8 @@ Client.on("message", Message => {
 				var query   = CommandArgs[0];
 				if (channel) {
 					channel.join().then(Connection => {
-						console.log(`[CHANNEL] Connected to ${v.name} !`);
-						Message.channel.send(`${Emojis.SUCCESS} Connected to channel **${v.name}**.`);
+						console.log(`[CHANNEL] Connected to ${channel.name} !`);
+						Message.channel.send(`${Emojis.SUCCESS} Connected to channel **${channel.name}**.`);
 
 						if (CommandArgs[0]) {
 							if (!Ytdl.validateURL(CommandArgs[0])) {
