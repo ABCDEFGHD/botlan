@@ -78,11 +78,14 @@ Client.on("message", Message => {
 			/**
 			 * @name play
 			 *  Play music from YouTube.
+			 *
+			 * @param {args[0]} query
 			 */
 			case "play":
-				v = Message.member.voiceChannel;
-				if (v) {
-					v.join().then(Connection => {
+				var channel = Message.member.voiceChannel;
+				var query   = CommandArgs[0];
+				if (channel) {
+					channel.join().then(Connection => {
 						console.log(`[CHANNEL] Connected to ${v.name} !`);
 						Message.channel.send(`${Emojis.SUCCESS} Connected to channel **${v.name}**.`);
 
@@ -111,7 +114,7 @@ Client.on("message", Message => {
 
 										m.edit({
 											embed: {
-												color: 0x000000,
+												color: 0xFF0000,
 												author: {
 													name: "Song added !",
 													icon_url: "https://yt3.ggpht.com/OgVV66t5vou1LkAbPh7yHbJA73Z2kKHs6-mFaeVFjnlU-pWESAPXFi-5pMASF7Mp1YLfoMdeI38v68U=s288-mo-c-c0xffffffff-rj-k-no"
@@ -169,8 +172,9 @@ Client.on("message", Message => {
 			case "stop":
 				if (AudioPlayer) {
 					AudioPlayer.stop();
-					console.log(`[CHANNEL] Left channel ${AudioPlayer.VOICE_CHANNEL.name}.`);
-					Message.channel.send(`${Emojis.SUCCESS} Left channel **${AudioPlayer.VOICE_CHANNEL.name}**.`);
+					var name = AudioPlayer.get("VOICE_CHANNEL").name;
+					console.log(`[CHANNEL] Left channel ${name}.`);
+					Message.channel.send(`${Emojis.SUCCESS} Left channel **${name}**.`);
 					AudioPlayer = null;
 				} else {
 					Message.channel.send(`${Emojis.WARNING} The bot is not in a voice channel !`);
